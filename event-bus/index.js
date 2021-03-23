@@ -27,8 +27,8 @@ app.post('/events', async (req, res) => {
 
   try {
     await axios.post('http://posts-clusterip-srv:4000/events', event);
-    await axios.post('http://comments-srv:4001/events', event);
-    await axios.post('http://query-handler-srv:4002/events', event);
+    await axios.post('http://comments-clusterip-srv:4001/events', event);
+    await axios.post('http://query-handler-clusterip-srv:4002/events', event);
     await axios.post('http://comments-moderator-srv:4003/events', event);
   } catch (error) {
     console.log('Some services seem down');
